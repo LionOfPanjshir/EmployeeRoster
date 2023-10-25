@@ -53,6 +53,7 @@ class EmployeeListTableViewController: UITableViewController, EmployeeDetailTabl
         
         let employee = employees[indexPath.row]
         detailViewController?.employee = employee
+        detailViewController?.employeeType = employees[indexPath.row].employeeType
         
         return detailViewController
     }
