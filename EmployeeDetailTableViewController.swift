@@ -26,6 +26,7 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
     var isEditingBirthday = false
     var isDobDatePickerVisible: Bool = false {
         didSet {
+            //isEditingBirthday.toggle()
             dobDatePicker.isHidden = !isDobDatePickerVisible
             tableView.beginUpdates()
             tableView.endUpdates()
@@ -111,8 +112,10 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath == dobDatePickerLabelIndexPath {
-            isDobDatePickerVisible = true
+            isDobDatePickerVisible.toggle() //= true
             isEditingBirthday.toggle()
+            tableView.beginUpdates()
+            tableView.endUpdates()
             if dobLabel.text == nil {
                 dobLabel.textColor = .label
                 dobLabel.text = dobDatePicker.date.formatted(date: .numeric, time: .omitted)
